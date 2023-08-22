@@ -1,4 +1,14 @@
 const inquirer = require('inquirer')
+const mysql = require('mysql2');
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: process.env.MYSQL_PASSWORD,
+    database: 'company_db'
+},
+console.log(`Connected to the company_db database.`)
+);
 
 const menu = [
     {
