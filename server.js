@@ -19,6 +19,8 @@ const menu = [
     }
 ];
 
+let answers
+
 (async () => {
     const database = await mysql.createConnection({
         host: 'localhost',
@@ -27,8 +29,12 @@ const menu = [
         database: 'company_db'
     })
 
-    let answers = await inquirer.prompt(menu)
-    console.log(answers)
+    do {
+        answers = await inquirer.prompt(menu)
+        
+        console.log(answers)
+
+    } while (answers.command !== 'Quit')
 
     await database.end()
 })();
