@@ -39,7 +39,11 @@ let data
                 console.log(data[0])
                 break;
             case 'Add Employee':
-                // TODO: Implement...
+                // TODO: Retrieve valid departments...
+                // TODO: Retrieve valid roles...
+                // TODO: Retrieve valid employees
+                // TODO: Ask relevant questions...
+                // TODO: Insert data into relevant table...
                 break;
             case 'Update Employee Role':
                 // TODO: Implement...
@@ -49,14 +53,23 @@ let data
                 console.log(data[0])
                 break;
             case 'Add Role':
-                // TODO: Implement...
+                // TODO: Retrieve valid departments...
+                // TODO: Ask relevant questions...
+                // TODO: Insert data into relevant table...
                 break;
             case 'View All Departments':
                 data = await database.query('SELECT * FROM department')
                 console.log(data[0])
                 break;
             case 'Add Department':
-                // TODO: Implement...
+                subanswers = await inquirer.prompt([
+                    {
+                        type: 'input',
+                        message: 'what is the name of the department?',
+                        name: 'department',  
+                    }
+                ])
+                data = await database.query(`INSERT INTO department (name) VALUES ('${subanswers.department}')`)
                 break;
         }
 
