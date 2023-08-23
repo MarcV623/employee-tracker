@@ -20,6 +20,7 @@ const menu = [
 ];
 
 let answers
+let data
 
 (async () => {
     const database = await mysql.createConnection({
@@ -49,7 +50,8 @@ let answers
                 // TODO: Implement...
                 break;
             case 'View All Departments':
-                // TODO: Implement...
+                data = await database.query('SELECT * FROM department')
+                console.log(data[0])
                 break;
             case 'Add Department':
                 // TODO: Implement...
