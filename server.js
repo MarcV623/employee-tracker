@@ -20,6 +20,8 @@ const menu = [
 ];
 
 let answers
+let subanswers
+
 let data
 
 (async () => {
@@ -53,9 +55,28 @@ let data
                 console.log(data[0])
                 break;
             case 'Add Role':
-                // TODO: Retrieve valid departments...
-                // TODO: Ask relevant questions...
-                // TODO: Insert data into relevant table...
+                data = await database.query('SELECT * FROM department')
+
+                subanswers = await inquirer.prompt([
+                    {
+                        type: 'input',
+                        message: 'Title?',
+                        name: 'title'
+                    },
+                    {
+                        type: 'input',
+                        message: 'Salary?',
+                        name: 'salary'
+                    },
+                    {
+                        type: 'list', 
+                        message: 'Department?',
+                        name: 'department',
+                        choices: data[0].map(department => department.name)
+                    }
+                ])
+
+                await database.query(`INSERT INTO role (title, salary, department_id) VALUES ('${subanswers.title}', ${subanswers.salary}, ${data[0].find(department => department.name === subanswers.department).id})`)
                 break;
             case 'View All Departments':
                 data = await database.query('SELECT * FROM department')
@@ -69,7 +90,7 @@ let data
                         name: 'department',  
                     }
                 ])
-                data = await database.query(`INSERT INTO department (name) VALUES ('${subanswers.department}')`)
+                await database.query(`INSERT INTO department (name) VALUES ('${subanswers.department}')`)
                 break;
         }
 
