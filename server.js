@@ -32,7 +32,29 @@ let answers
     do {
         answers = await inquirer.prompt(menu)
         
-        console.log(answers)
+        switch (answers.command) {
+            case 'View All Employees':
+                // TODO: Implement...
+                break;
+            case 'Add Employee':
+                // TODO: Implement...
+                break;
+            case 'Update Employee Role':
+                // TODO: Implement...
+                break;
+            case 'View All Roles':
+                // TODO: Implement...
+                break;
+            case 'Add Role':
+                // TODO: Implement...
+                break;
+            case 'View All Departments':
+                // TODO: Implement...
+                break;
+            case 'Add Department':
+                // TODO: Implement...
+                break;
+        }
 
     } while (answers.command !== 'Quit')
 
