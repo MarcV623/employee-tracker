@@ -35,7 +35,8 @@ let data
         
         switch (answers.command) {
             case 'View All Employees':
-                // TODO: Implement...
+                data = await database.query('SELECT * FROM employee')
+                console.log(data[0])
                 break;
             case 'Add Employee':
                 // TODO: Implement...
