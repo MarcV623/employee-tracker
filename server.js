@@ -44,7 +44,8 @@ let data
                 // TODO: Implement...
                 break;
             case 'View All Roles':
-                // TODO: Implement...
+                data = await database.query('SELECT * FROM role')
+                console.log(data[0])
                 break;
             case 'Add Role':
                 // TODO: Implement...
