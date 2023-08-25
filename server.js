@@ -41,9 +41,8 @@ let data
                 console.log(data[0])
                 break;
             case 'Add Employee':
-                // TODO: Retrieve valid departments...
                 // TODO: Retrieve valid roles...
-                // TODO: Retrieve valid employees
+                // TODO: Retrieve valid employees... + None/NULL option
                 // TODO: Ask relevant questions...
                 // TODO: Insert data into relevant table...
                 break;
@@ -60,17 +59,17 @@ let data
                 subanswers = await inquirer.prompt([
                     {
                         type: 'input',
-                        message: 'Title?',
+                        message: 'What is the name of the role?',
                         name: 'title'
                     },
                     {
                         type: 'input',
-                        message: 'Salary?',
+                        message: 'What is the salary of the role?',
                         name: 'salary'
                     },
                     {
                         type: 'list', 
-                        message: 'Department?',
+                        message: 'Which department does the role belong to?',
                         name: 'department',
                         choices: data[0].map(department => department.name)
                     }
